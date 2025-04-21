@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Cliente } from '../services/fetchClientes';
 import { fetchClientes } from '../services/fetchClientes';
+import { useNavigate } from 'react-router-dom';
 
 const ClientsList: React.FC = () => {
   const [clientes, setClientes] = useState<Cliente[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [paginaAtual, setPaginaAtual] = useState(1);
+  const navigate = useNavigate();
 
   const itensPorPagina = 10;
 
@@ -33,7 +35,7 @@ const ClientsList: React.FC = () => {
         value={searchTerm}
         onChange={(e) => {
           setSearchTerm(e.target.value);
-          setPaginaAtual(1); // volta pra página 1 ao buscar
+          setPaginaAtual(1);
         }}
         style={{
           padding: '8px',
@@ -48,7 +50,9 @@ const ClientsList: React.FC = () => {
       {clientesPaginados.map((cliente) => (
         <div
           key={cliente.id}
+          onClick={() => navigate(`/cliente/${cliente.id}`)}
           style={{
+            cursor: 'pointer',
             backgroundColor: 'white',
             color: 'black',
             padding: '16px',
@@ -63,7 +67,6 @@ const ClientsList: React.FC = () => {
         </div>
       ))}
 
-      {/* Paginação */}
       <div style={{ marginTop: '20px', display: 'flex', gap: '10px' }}>
         <button
           onClick={() => setPaginaAtual((prev) => Math.max(prev - 1, 1))}
