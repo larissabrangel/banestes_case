@@ -1,4 +1,3 @@
-// src/services/fetchClientes.ts
 import Papa from 'papaparse';
 
 export interface Cliente {
@@ -16,26 +15,28 @@ export interface Cliente {
   codigoAgencia: number;
 }
 
-export const fetchClientes = async (): Promise<Cliente[]> => {
-  const res = await fetch("https://docs.google.com/spreadsheets/d/1PBN_HQOi5ZpKDd63mouxttFvvCwtmY97Tb5if5_cdBA/gviz/tq?tqx=out:csv&sheet=clientes");
-  const csv = await res.text();
+export async function fetchClientes(): Promise<Cliente[]> {
+  const url = 'https://docs.google.com/spreadsheets/d/1PBN_HQOi5ZpKDd63mouxttFvvCwtmY97Tb5if5_cdBA/gviz/tq?tqx=out:csv&sheet=clientes';
+  const response = await fetch(url);
+  const csvText = await response.text();
 
-  const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true });
+  const parsed = Papa.parse(csvText, { header: true });
+  const rawClientes = parsed.data as any[];
 
-  const clientes: Cliente[] = (parsed.data as any[]).map((row) => ({
-    id: row["id"],
-    cpfCnpj: row["cpfCnpj"],
-    rg: row["rg"] || undefined,
-    dataNascimento: new Date(row["dataNascimento"]),
-    nome: row["nome"],
-    nomeSocial: row["nomeSocial"] || undefined,
-    email: row["email"],
-    endereco: row["endereco"],
-    rendaAnual: parseFloat(row["rendaAnual"]),
-    patrimonio: parseFloat(row["patrimonio"]),
-    estadoCivil: row["estadoCivil"],
-    codigoAgencia: parseInt(row["codigoAgencia"], 10),
+  const clientes: Cliente[] = rawClientes.map((c) => ({
+    id: c.id,
+    cpfCnpj: c.cpfCnpj,
+    rg: c.rg || undefined,
+    dataNascimento: new Date(c.dataNascimento),
+    nome: c.nome,
+    nomeSocial: c.nomeSocial || undefined,
+    email: c.email,
+    endereco: c.endereco,
+    rendaAnual: parseFloat(c.rendaAnual),
+    patrimonio: parseFloat(c.patrimonio),
+    estadoCivil: c.estadoCivil as Cliente["estadoCivil"],
+    codigoAgencia: parseInt(c.codigoAgencia),
   }));
 
   return clientes;
-};
+}
