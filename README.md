@@ -34,6 +34,7 @@ Este é um projeto frontend desenvolvido em **React + TypeScript**, utilizando o
 ### 1. Clone o repositório
 
 git clone [https://github.com/seu-usuario/seu-repo.git](https://github.com/larissabrangel/banestes_case)
+
 cd banestes_case
 
 ### 2. Instale as dependências
