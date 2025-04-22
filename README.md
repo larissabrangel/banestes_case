@@ -1,58 +1,49 @@
-<<<<<<< HEAD
-# banestes_case
-=======
-# React + TypeScript + Vite
+# 💼 Banestes Case – Sistema de Gerenciamento de Clientes Bancários
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto frontend desenvolvido em **React + TypeScript**, utilizando o **Vite** para uma experiência de desenvolvimento rápida e moderna. A aplicação consome dados diretamente de uma planilha Google, atualizados em tempo real, e exibe informações completas de **clientes**, **contas bancárias** e **agências**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Funcionalidades
 
-## Expanding the ESLint configuration
+- ✅ Listagem de todos os clientes com dados principais
+- 🔍 Filtro por **nome** ou **CPF/CNPJ**
+- 📄 Paginação (10 clientes por página)
+- 👤 Visualização detalhada de cada cliente
+- 🏦 Exibição de todas as **contas** do cliente
+- 🏢 Exibição de **agência** associada ao cliente
+- 🔙 Botão de **voltar** para a lista
+- 🎨 Interface amigável e responsiva
+- 🧑‍🦯 Boas práticas de **acessibilidade**
+- 🚀 Código limpo, tipado com **TypeScript**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🛠️ Tecnologias utilizadas
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- React
+- TypeScript
+- Vite
+- React Router DOM
+- CSS
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
->>>>>>> 298a423 (Initial commit)
+## ⚙️ Como rodar o projeto localmente
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/seu-usuario/seu-repo.git
+cd banestes_case
+
+### 2. Instale as dependências
+
+'''bash
+npm install
+
+### 3. Rode o projeto
+
+npm run dev
+
+A aplicação estará disponível em: http://localhost:5173
